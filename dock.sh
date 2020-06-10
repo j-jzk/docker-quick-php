@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 
+NAME=testing-container
+
 showHelp() {
 	echo "-h	shows this help"
 	echo "-b	rebuilds the container"
@@ -9,7 +11,7 @@ showHelp() {
 
 rebuild() {
 	echo "Building the container."
-	docker build -t bodovani .
+	docker build -t $NAME .
 }
 
 for arg in "$@"; do
@@ -21,4 +23,4 @@ for arg in "$@"; do
 done
 
 
-docker run $daemon -p 8080:80 -v "$(pwd)/src":/var/www/html bodovani
+docker run $daemon -p 8080:80 -v "$(pwd)/src":/var/www/html $NAME
